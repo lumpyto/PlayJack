@@ -1,0 +1,19 @@
+{
+  "standard": {
+    "username": "visual_user",
+    "password": "secret_sauce"
+  },
+  "apiUser": {
+    "username": "locked_out_user",
+    "password": "secret_sauce"
+  },
+  "myUser": {
+    "username": "example3",
+    "email": "example3@mail.bg",
+    "password": "Qwerasdf1@#4"
+  },
+  "newUser": {
+    "username": "brave-oreo-qynk1x0h6qben6xiex@den.tigrmail.com",
+    "password": "Qwerasdf1@#4"
+  }
+}
