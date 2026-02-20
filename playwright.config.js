@@ -25,7 +25,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: 'line',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     actionTimeout: 10000,
@@ -44,10 +44,11 @@ export default defineConfig({
     {
       name: 'chromium',
       use: {
-    viewport: null,
-    deviceScaleFactor: undefined,
+        channel: 'chrome',
+        viewport: null,
+        deviceScaleFactor: undefined,
     
-    launchOptions: {
+      launchOptions: {
       args: ['--start-maximized']
         },
       },
