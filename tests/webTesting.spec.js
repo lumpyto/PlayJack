@@ -54,7 +54,9 @@ test('Successful Registration', async ({ page }) => {
   console.log(`Your password is ${shared.password}`);
 
   //Check for successful registration. Login with Username
-  await page.locator('.WelcomeBonus_iconClose__C5oab').click();
+  await page.locator('.WelcomeBonus_iconClose__C5oab')
+    .click({ timeout: 5000 })
+    .catch(() => {});
   await page.locator('[data-qa="expand_account_menu"]', {delay:200}).click();
   await expect(page.locator('.account-username')).toHaveText(shared.username);
   await page.getByTitle("Logout").click();
