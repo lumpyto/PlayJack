@@ -28,15 +28,31 @@ export default defineConfig({
   reporter: 'line',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    actionTimeout: 10000,
-    navigationTimeout: 30000,
-    headless: false,          
-    slowMo: 4000,
-    /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+  headless: true,
+  userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+  viewport: { width: 1920, height: 1080 },
+  ignoreHTTPSErrors: true,
+  javaScriptEnabled: true,
+  trace: 'on',
+  bypassCSP: true,
+  launchOptions: {
+    args: [
+      '--disable-blink-features=AutomationControlled',
+      '--no-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-infobars',
+      '--window-size=1920,1080',
+      '--start-maximized',
+      '--disable-web-security'  // ако има CORS/strict CSP
+    ]
+  }
+
+    // /* Base URL to use in actions like `await page.goto('')`. */
+    // // baseURL: 'http://localhost:3000',
+
+    // /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    // trace: 'on',  //retain-on-failure
   },
 
   /* Configure projects for major browsers */
@@ -44,8 +60,9 @@ export default defineConfig({
     {
       name: 'chromium',
       use: {
+        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
         channel: 'chrome',
-        viewport: null,
+        viewport: { width: 1920, height: 1080 },
         deviceScaleFactor: undefined,
     
       launchOptions: {

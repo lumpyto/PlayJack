@@ -29,13 +29,14 @@ test.describe('JACK Entertainment Page Tests', () => {
   });
 
 test('Successful Registration', async ({ page }) => {
-    await expect(page).toHaveTitle('JACK Entertainment Online | Free Casino Games & Slots');
+  await expect(page).toHaveTitle('JACK Entertainment Online | Free Casino Games & Slots');
 
-  await page.click('text=Sign Up');
+  await page.getByRole('button', { name: 'Close' }).click();
+  await page.getByRole('link', { name: 'Sign Up' }).click();
+
   await page.fill('input[name="username"]', shared.username);
   await page.fill('input[name="email"]', shared.email);
   await page.fill('input[name="password"]', shared.password);
-  await page.getByRole('button', { name: 'Close' }).click();
   await page.click('button[data-qa="signup_submit_btn"]');
 
   let i = 0;
